@@ -1,0 +1,235 @@
+## out/m01_s14.png  (Module 01, slide 14) — title: Draw: the data lifecycle
+  - Six boxes left to right: Collect, Store, Clean, Analyse, Model, Communicate
+  - Under each, one ShopKart example: app order, database, fix city names, revenue by city, predict returns, dashboard
+  - Bracket Collect + Store + Clean as Engineer
+  - Bracket Clean + Analyse + Communicate as Analyst
+  - Bracket Analyse + Model + Communicate as Scientist
+  - Circle back arrow: decisions create new data
+
+## out/m02_s13.png  (Module 02, slide 13) — title: Draw: relative vs absolute references
+  - Draw a 3x3 grid, write =A1*B1 in C1
+  - Drag it down: arrows show A1 becoming A2, A3
+  - Now write =A1*$B$1: the dollar pins B1
+  - Write the rule: $ before letter pins column, before number pins row
+  - Press F4 to cycle: A1, $A$1, A$1, $A1
+
+## out/m02_s20.png  (Module 02, slide 20) — title: Draw: how XLOOKUP finds a category
+  - Left: orders row with product_id P048
+  - Right: products table, columns product_id and category
+  - Arrow 1: look for P048 down product_id
+  - Arrow 2: step across to category, return Books
+  - Write: =XLOOKUP(D2, products!A:A, products!C:C, "Not found")
+
+## out/m03_s04.png  (Module 03, slide 4) — title: Draw: the data-type tree
+  - Top box: Data
+  - Two branches: Categorical, Numerical
+  - Under Categorical: Nominal (city), Ordinal (rating)
+  - Under Numerical: Discrete (quantity), Continuous (revenue)
+  - Side note: order_id looks like a number-ish code but is a label: never average it
+
+## out/m03_s07.png  (Module 03, slide 7) — title: Draw: one bulk order breaks the average
+  - Write 5 orders: 500, 700, 800, 900, 1,100
+  - Mean = 4,000 / 5 = 800. Median = middle = 800
+  - Add one order of 1,50,000
+  - New mean = 1,54,000 / 6 = 25,667
+  - New median = (800 + 900) / 2 = 850
+  - Write: median resists outliers, mean does not
+
+## out/m03_s12.png  (Module 03, slide 12) — title: Draw: same average, different promise
+  - City X delivery days: 4, 4, 4, 4, 4
+  - City Y delivery days: 1, 2, 4, 6, 7
+  - Both means = 4. Draw dots on a number line
+  - Range: X = 0, Y = 6
+  - SD: X = 0, Y = about 2.5
+  - Which city would you trust for a birthday gift?
+
+## out/m03_s15.png  (Module 03, slide 15) — title: Draw: box plot of delivery days
+  - Number line 2 to 12
+  - Box from Q1 = 3 to Q3 = 5, line at median 4
+  - Whisker left to min 2, whisker right to fence 8
+  - Dots for 9, 10, 11, 12 days: 36 orders
+  - Label: these are the late deliveries to investigate
+
+## out/m03_s18.png  (Module 03, slide 18) — title: Draw: three shapes
+  - Bell curve: label mean = median = mode in the middle
+  - Right-skewed hill: long tail to the right, mean pulled right of median
+  - Left-skewed: tail to the left
+  - Under the bell: 68% within 1 SD, 95% within 2 SD
+
+## out/m03_s22.png  (Module 03, slide 22) — title: Draw: the correlation scale
+  - Line from −1 to +1, 0 in the middle
+  - Three mini scatter plots: up-slope (+), down-slope (−), cloud (0)
+  - Mark bands: under 0.1 none, 0.1–0.3 weak, 0.3–0.6 moderate, above 0.6 strong
+  - Write: correlation measures straight-line togetherness only
+
+## out/m03_s28.png  (Module 03, slide 28) — title: Draw: how an A/B test works
+  - Visitors arrive, coin flip splits them 50/50
+  - Group A sees old grey Proceed button
+  - Group B sees new orange Place order button
+  - Count orders in each group for two weeks
+  - Only the button differs, so a real gap must come from the button
+
+## out/m04_s05.png  (Module 04, slide 5) — title: Draw: the ShopKart schema
+  - Draw three boxes: customers (left), orders (middle), products (right)
+  - List columns inside each; underline the primary key
+  - orders: write customer_id and product_id, label FK
+  - Arrow orders.customer_id → customers.customer_id
+  - Arrow orders.product_id → products.product_id
+  - Write 1 and many on each arrow: one customer, many orders
+
+## out/m04_s20.png  (Module 04, slide 20) — title: Draw: GROUP BY makes buckets
+  - Write 6 order rows: city and revenue
+  - Draw 3 buckets labelled Delhi, Chennai, Pune
+  - Drop each row into its city's bucket
+  - Under each bucket write SUM and COUNT
+  - Circle: many rows in, one row per bucket out
+
+## out/m04_s22.png  (Module 04, slide 22) — title: Draw: the order SQL really runs in
+  - Write the query in the order we TYPE it
+  - Next to it, number the order SQL RUNS it
+  - 1 FROM, 2 WHERE, 3 GROUP BY, 4 HAVING, 5 SELECT, 6 ORDER BY
+  - Draw the table shrinking at each step
+  - Star: aliases from SELECT are unknown to WHERE
+
+## out/m04_s28.png  (Module 04, slide 28) — title: Draw: how JOIN matches rows
+  - Left: mini orders table, 4 rows with product_id
+  - Right: mini products table, 3 rows
+  - Draw a line from each order to its product_id
+  - Write the joined rows below, side by side
+  - Show one product used by two orders: it repeats
+
+## out/m04_s33.png  (Module 04, slide 33) — title: Draw: LEFT JOIN keeps everyone
+  - Left: customers C0006, C0007, C0008, C0009
+  - Right: a few orders; none for C0008
+  - INNER JOIN result: C0008 disappears
+  - LEFT JOIN result: C0008 stays, order_id = NULL
+  - Circle the NULL: this is how we find non-buyers
+
+## out/m05_s08.png  (Module 05, slide 8) — title: Draw: variables are labelled boxes
+  - Draw 4 boxes. Labels: order_id, city, quantity, unit_price
+  - Write inside: "O10006", "Delhi", 2, 1440
+  - Arrow from '=' : value goes INTO the box
+  - Write revenue = 2 x 1440 x 0.95 = 2736.0
+
+## out/m05_s14.png  (Module 05, slide 14) — title: Draw: a list with positions
+  - Draw 6 boxes in a row: 1737.6, 570.0, 2145.1, 3434.0, 3486.6, 2736.0
+  - Write 0 to 5 under them (Python counts from 0)
+  - Write -1 under the last box
+  - Bracket boxes 0-2: order_amounts[0:3]
+
+## out/m05_s21.png  (Module 05, slide 21) — title: Draw: the if / elif / else decision
+  - Diamond: revenue >= 5000? Yes → Big
+  - No → second diamond: revenue >= 1000? Yes → Medium
+  - No → Small
+  - Write ₹3,434 at the top and trace it to Medium
+
+## out/m05_s23.png  (Module 05, slide 23) — title: Draw: tracing a loop
+  - Table with columns: amount, total, big_orders
+  - Row per loop turn: 1737.6 → 570.0 → ... → 24484.8
+  - Update total each row
+  - Add 1 to big_orders only when amount >= 5000
+
+## out/m06_s03.png  (Module 06, slide 3) — title: Draw: anatomy of a DataFrame
+  - Grid of 4 rows x 4 columns: order_id, city, quantity, unit_price
+  - Left edge: index 0, 1, 2, 3
+  - Circle one column: a Series
+  - Top label: df.shape = (rows, columns)
+
+## out/m06_s20.png  (Module 06, slide 20) — title: Draw: pd.cut age groups on a number line
+  - Number line 17 to 60
+  - Cut marks at 25, 35, 45
+  - Label 18-25, 26-35, 36-45, 46-60
+  - Right edge included: 25 goes to 18-25
+
+## out/m06_s23.png  (Module 06, slide 23) — title: Draw: split → apply → combine
+  - 8 order rows with city and revenue
+  - Split into piles by city
+  - Apply sum to each pile
+  - Combine into a small city → total table
+
+## out/m06_s28.png  (Module 06, slide 28) — title: Draw: two LEFT joins
+  - orders box in the middle (5,000 rows)
+  - products box right, arrow on product_id
+  - customers box left, arrow on customer_id
+  - Write: rows before = rows after = 5,000
+
+## out/m07_s04.png  (Module 07, slide 4) — title: Draw: a data pipeline from source to user
+  - Left: three boxes – ShopKart app, payments, CRM (source systems)
+  - Arrows into three circles: Extract → Transform → Load
+  - Right: a cylinder labelled 'warehouse'
+  - Far right: stick figures – analyst, scientist, manager
+  - Under Transform write: clean, merge, add revenue
+  - Under the whole line: 'runs every night at 2 am'
+
+## out/m07_s19.png  (Module 07, slide 19) — title: Draw: the ShopKart star schema
+  - Centre: big box fact_orders – order_id, date_key, customer_id, product_id, quantity, revenue, profit
+  - Top: dim_date – date_key, month, quarter, weekday
+  - Left: dim_customer – customer_id, gender, age, membership
+  - Right: dim_product – product_id, product_name, category
+  - Draw a line from each key in the fact to its dim: a star
+  - Write: 'fact = numbers, dims = descriptions'
+
+## out/m07_s20.png  (Module 07, slide 20) — title: Draw: scheduling – who runs it at 2 am?
+  - Draw a clock showing 2:00
+  - Arrow to four boxes: extract → transform → checks → load
+  - Under the clock write the cron line: 0 2 * * *
+  - Label minute, hour, day, month, weekday
+  - Red cross on 'checks' box → arrow to 'email the engineer'
+  - Title the boxes 'DAG = tasks + arrows'
+
+## out/m08_s05.png  (Module 08, slide 5) — title: Draw: one fact, two pictures
+  - Two bars: Delhi ₹23.2 L, Bengaluru ₹22.6 L
+  - Version A: y-axis from 0 → bars almost equal
+  - Version B: y-axis from 22 → Delhi looks 2x taller
+  - Circle the axis start. Write: bars must start at 0
+
+## out/m09_s05.png  (Module 09, slide 5) — title: Draw: learning from past orders
+  - Draw a small table: city, delivery days, COD?, returned
+  - Fill 5 rows; 2 returned
+  - Circle the last column: this is y (target)
+  - Bracket the other columns: X (features)
+  - Arrow to a new row with returned = ?
+
+## out/m09_s11.png  (Module 09, slide 11) — title: Draw: the exam analogy
+  - Big box: 5,000 orders
+  - Split: 4,000 practice questions (train) | 1,000 exam (test)
+  - Model studies only the practice box
+  - Score only on the exam box
+  - Write: stratify keeps 13.7% returns in both
+
+## out/m09_s15.png  (Module 09, slide 15) — title: Draw: the best straight line
+  - Axes: quantity (x), revenue (y)
+  - Plot 8 dots, scattered
+  - Draw a line through the middle
+  - Draw vertical arrows from dots to line: errors
+  - Write: revenue = intercept + slope × quantity
+
+## out/m09_s20.png  (Module 09, slide 20) — title: Draw: a decision tree for one order
+  - Top box: City = Pune?
+  - Yes branch: 31% returned → then asks delivery > 9 days?
+  - No branch: Fashion? → 19% returned vs 10%
+  - Leaves show % returned
+  - Write: max_depth = number of questions
+
+## out/m09_s27.png  (Module 09, slide 27) — title: Draw: the confusion matrix
+  - 2x2 grid: rows = actual, columns = predicted
+  - TN top-left (kept, said kept)
+  - FP top-right: false alarm
+  - FN bottom-left: missed return
+  - TP bottom-right: caught it
+
+## out/m09_s32.png  (Module 09, slide 32) — title: Draw: the two curves
+  - x-axis: tree depth 1 to 15
+  - Train line climbing towards 100%
+  - Test line flat, then falling
+  - Shade the gap: overfitting
+  - Label left side underfit, right side overfit
+
+## out/m10_s04.png  (Module 10, slide 4) — title: Draw: turn the brief into questions
+  - Write the brief at the top and circle 'returns' and 'profit'
+  - Draw three branches: How big? Where? Predict?
+  - Under 'How big': return rate, ₹ revenue of returned orders
+  - Under 'Where': city, category, payment mode, delivery days
+  - Under 'Predict': target = returned, features known at order time
+  - Cross out 'rating' and write: leakage
+

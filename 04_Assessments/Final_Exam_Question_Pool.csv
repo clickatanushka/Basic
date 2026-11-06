@@ -1,0 +1,526 @@
+id,module,module_name,type,question,option_a,option_b,option_c,option_d,correct,explanation,verified
+Q001,M01,Orientation,concept,Which role mainly answers the question 'What will happen next?' using models?,Data engineer,Data analyst,Database administrator,Data scientist,D,Analysts explain what happened and why; scientists build models to predict what will happen.,Not applicable (concept or scenario question)
+Q002,M01,Orientation,concept,Who builds and maintains the pipelines that bring data into the database so others can use it?,Business analyst,Data scientist,Data engineer,Data analyst,C,Engineers build the 'pipes'; analysts and scientists use the data that arrives.,Not applicable (concept or scenario question)
+Q003,M01,Orientation,scenario,Your manager asks: 'Which city gave ShopKart the most revenue in 2025?' What kind of work is this?,Machine learning prediction,A/B testing,Data engineering,Descriptive data analytics,D,It asks what already happened – a descriptive analytics question answered with grouping and sums.,Not applicable (concept or scenario question)
+Q004,M01,Orientation,concept,"In the data lifecycle used in this course (Collect → Store → Clean → Analyse → Model → Communicate), which step comes straight after Store?",Analyse,Model,Clean,Collect,C,"Data is stored, then cleaned before it can be analysed.",Not applicable (concept or scenario question)
+Q005,M01,Orientation,concept,"In this course, where do we write and run Python code?",SQLite Online,Power BI Desktop,Google Sheets,Google Colab,D,"Modules 5–10 use Google Colab notebooks; SQL runs in SQLite Online, spreadsheets in Google Sheets.",Not applicable (concept or scenario question)
+Q006,M02,Excel/Sheets,predict-output,"Sheet (row 1 = headers):
+
+| | A (City) | B (Category) | C (Revenue) |
+|---|---|---|---|
+| 2 | Pune | Fashion | 1200 |
+| 3 | Delhi | Books | 300 |
+| 4 | Pune | Books | 450 |
+| 5 | Mumbai | Fashion | 800 |
+| 6 | Delhi | Fashion | 1500 |
+
+What does =SUMIFS(C2:C6,A2:A6,""Pune"") return?",1200,3450,2,1650,D,It adds Revenue where City is Pune: 1200 + 450 = 1650.,Recalculated in LibreOffice
+Q007,M02,Excel/Sheets,predict-output,"Sheet (row 1 = headers):
+
+| | A (City) | B (Category) | C (Revenue) |
+|---|---|---|---|
+| 2 | Pune | Fashion | 1200 |
+| 3 | Delhi | Books | 300 |
+| 4 | Pune | Books | 450 |
+| 5 | Mumbai | Fashion | 800 |
+| 6 | Delhi | Fashion | 1500 |
+
+What does =COUNTIFS(B2:B6,""Fashion"",C2:C6,"">1000"") return?",1,3,2,2700,C,Rows that are Fashion AND above 1000: 1200 (Pune) and 1500 (Delhi) = 2.,Recalculated in LibreOffice
+Q008,M02,Excel/Sheets,predict-output,"Sheet (row 1 = headers):
+
+| | A (City) | B (Category) | C (Revenue) |
+|---|---|---|---|
+| 2 | Pune | Fashion | 1200 |
+| 3 | Delhi | Books | 300 |
+| 4 | Pune | Books | 450 |
+| 5 | Mumbai | Fashion | 800 |
+| 6 | Delhi | Fashion | 1500 |
+
+What does =AVERAGEIFS(C2:C6,B2:B6,""Books"") return?",750,850,375,300,C,Books rows: 300 and 450; average = 750 / 2 = 375.,Recalculated in LibreOffice
+Q009,M02,Excel/Sheets,predict-output,"Sheet (row 1 = headers):
+
+| | A (City) | B (Category) | C (Revenue) |
+|---|---|---|---|
+| 2 | Pune | Fashion | 1200 |
+| 3 | Delhi | Books | 300 |
+| 4 | Pune | Books | 450 |
+| 5 | Mumbai | Fashion | 800 |
+| 6 | Delhi | Fashion | 1500 |
+
+What does =XLOOKUP(""Mumbai"",A2:A6,C2:C6) return?",800,5,Fashion,#N/A,A,XLOOKUP finds Mumbai in column A and returns the matching value from column C: 800.,Recalculated in LibreOffice
+Q010,M02,Excel/Sheets,predict-output,"Sheet (row 1 = headers):
+
+| | A (City) | B (Category) | C (Revenue) |
+|---|---|---|---|
+| 2 | Pune | Fashion | 1200 |
+| 3 | Delhi | Books | 300 |
+| 4 | Pune | Books | 450 |
+| 5 | Mumbai | Fashion | 800 |
+| 6 | Delhi | Fashion | 1500 |
+
+What does =IF(C3>1000,""High"",""Low"") return?",300,FALSE,Low,High,C,"C3 is 300, which is not greater than 1000, so IF returns the 'value if false': Low.",Recalculated in LibreOffice
+Q011,M02,Excel/Sheets,predict-output,Cell D2 contains =C2*$F$1. You copy D2 down to D3. What formula is in D3?,=C2*$F$1,=C3*$F$2,=D3*$F$1,=C3*$F$1,D,The relative reference C2 moves down one row; the absolute reference $F$1 stays fixed.,Checked with openpyxl formula translator
+Q012,M02,Excel/Sheets,predict-output,"What does =TRIM(PROPER(""  new delhi "")) return?",  New Delhi ,NEW DELHI,new delhi,New Delhi,D,PROPER capitalises each word and TRIM removes extra spaces at the start and end.,Recalculated in LibreOffice
+Q013,M02,Excel/Sheets,predict-output,"A1 contains the text ₹1,299. What does =VALUE(SUBSTITUTE(SUBSTITUTE(A1,""₹"",""""),"","","""")) return?",#VALUE!,₹1299,1299 (a number),"1,299 as text",C,"Both SUBSTITUTEs remove ₹ and the comma, leaving '1299', which VALUE turns into the number 1299.",Recalculated in LibreOffice
+Q014,M02,Excel/Sheets,predict-output,"An order has quantity 2 (A2), unit_price 500 (B2) and discount 0.1 (C2). What does =A2*B2*(1-C2) return?",999.8,100,1000,900,D,Revenue = 2 × 500 × (1 − 0.1) = 900.,Recalculated in LibreOffice
+Q015,M02,Excel/Sheets,predict-output,"A1:A5 contains: 10, (blank), abc, 5, (blank). What does =COUNT(A1:A5) return?",2,3,4,5,A,COUNT counts only numeric cells: 10 and 5. COUNTA would count 3 (it also counts the text).,Recalculated in LibreOffice
+Q016,M02,Excel/Sheets,concept,"In the raw ShopKart sheet, 70 discount cells are blank. What does a blank discount mean for this business, and how do we clean it?",It is an error – replace with 100%,No discount was given – replace blanks with 0,The value is unknown – replace with the average discount,The order was cancelled – delete the row,B,"For ShopKart a blank discount means no discount, so we fill it with 0 (the same rule used in pandas later).",Not applicable (concept or scenario question)
+Q017,M02,Excel/Sheets,concept,"Which feature lets you summarise 5,000 orders into total revenue by city and month by dragging fields, without writing formulas?",Conditional formatting,Freeze panes,Data validation,Pivot table,D,"A pivot table groups and aggregates rows by the fields you drag into Rows, Columns and Values.",Not applicable (concept or scenario question)
+Q018,M02,Excel/Sheets,concept,What is the main reason we keep raw data on one sheet and do cleaning in helper columns or a new sheet?,Because formulas only work on new sheets,Because Google Sheets cannot edit raw data,So the original data is never lost and every change can be checked,To make the file smaller,C,Never overwrite raw data; cleaning in helper columns keeps an audit trail and lets you fix mistakes.,Not applicable (concept or scenario question)
+Q019,M02,Excel/Sheets,scenario,Some order_date values are stored as text like 31-01-2025 while others are real dates. What problem will this cause first?,Pivot tables will delete those rows,The file will not open,Revenue totals will double,Sorting and grouping by month will be wrong for the text dates,D,"Text dates are not understood as dates, so sorting, filtering and month grouping treat them incorrectly until converted.",Not applicable (concept or scenario question)
+Q020,M02,Excel/Sheets,concept,You want to show monthly revenue for 2025 on a one-page report. Which chart fits best?,Line chart,Pie chart,Scatter plot,3D column chart,A,A line chart shows change over time; pies and 3D charts make trends hard to read.,Not applicable (concept or scenario question)
+Q021,M03,Statistics,predict-output,"Five order values (₹): 200, 300, 300, 400, 5000. What are the mean and the median?","Mean 1240, median 300","Mean 1240, median 400","Mean 1550, median 300","Mean 300, median 1240",A,Mean = 6200 / 5 = 1240. Sorted middle value = 300. The one large order pulls the mean up.,Run in Python
+Q022,M03,Statistics,scenario,"For the five orders 200, 300, 300, 400, 5000, which number best describes a 'typical' order?","The median, because one very large order distorts the mean","The maximum, because it is the largest","The range, because it shows the spread","The mean, because it uses all values",A,"With an outlier, the median is the better typical value.",Not applicable (concept or scenario question)
+Q023,M03,Statistics,predict-output,"What is the mode of 200, 300, 300, 400, 5000?",200,No mode,1240,300,D,The mode is the most frequent value; 300 appears twice.,Run in Python
+Q024,M03,Statistics,predict-output,"What is the range of 200, 300, 300, 400, 5000?",300,4700,4800,5000,C,Range = maximum − minimum = 5000 − 200 = 4800.,Run in Python
+Q025,M03,Statistics,concept,"payment_mode (UPI, COD, Credit Card…) is what type of data?",Categorical – ordinal,Categorical – nominal (no natural order),Numerical – continuous,Numerical – discrete,B,"Payment modes are labels with no order, so they are nominal categories.",Not applicable (concept or scenario question)
+Q026,M03,Statistics,concept,A customer rating from 1 to 5 stars is best described as:,Nominal – categories with no order,Text data,Ordinal – categories with a meaningful order,Continuous – any value is possible,C,Ratings have an order (5 is better than 4) but the gaps are not guaranteed to be equal.,Not applicable (concept or scenario question)
+Q027,M03,Statistics,concept,"In ShopKart, mean revenue per order is about ₹2,941 and the median about ₹1,525. What does this tell you about the distribution?",Mean and median are always this far apart,It is left-skewed,It is perfectly normal,It is right-skewed – a few large orders pull the mean up,D,"When mean is much larger than median, a long tail of large values exists on the right.",Run in Python
+Q028,M03,Statistics,concept,Which measure of spread is the distance between the 25th and 75th percentiles and is NOT affected by extreme outliers?,Range,Mean,Interquartile range (IQR),Standard deviation,C,"IQR = Q3 − Q1, covering the middle 50% of the data.",Not applicable (concept or scenario question)
+Q029,M03,Statistics,concept,The correlation between delivery_days and rating in ShopKart is about −0.33. What does this mean?,Longer deliveries get higher ratings,Longer deliveries cause ratings to drop by 33%,Longer deliveries tend to get somewhat lower ratings,There is no relationship,C,A negative correlation means as one goes up the other tends to go down; −0.33 is a moderate relationship and does not prove cause.,Run in Python
+Q030,M03,Statistics,scenario,Cities with more ShopKart delivery vans also have more returns. Your colleague says: 'Vans cause returns – cut vans.' What is the best reply?,"Bigger cities have more orders, which brings both more vans and more returns – correlation is not causation",Agree – the correlation proves it,Remove the cities with most vans from the data,Correlation above zero always means causation,A,A third factor (city size / order volume) can drive both; correlation alone does not show cause.,Not applicable (concept or scenario question)
+Q031,M03,Statistics,scenario,ShopKart wants to test if a new checkout page increases orders. What is the key step to make the A/B test fair?,Use the new page in November and compare with June,Randomly assign visitors to the old page (A) or the new page (B) at the same time,Let customers choose which page they want,Show the new page only to Prime customers,B,"Random assignment at the same time makes the two groups comparable, so the difference is due to the page.",Not applicable (concept or scenario question)
+Q032,M03,Statistics,concept,Correlation values always lie between:,−1 and +1,−100 and +100,0 and 100,0 and 1,A,"−1 is a perfect negative relationship, +1 perfect positive, 0 no linear relationship.",Not applicable (concept or scenario question)
+Q033,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT COUNT(*) FROM orders_mini WHERE returned = 'Y' AND amount > 1000;
+What is the result?",1,2,3,0,A,Returned orders are 1 (1200) and 4 (800); only order 1 is above 1000.,Run in SQLite on the shown table
+Q034,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT city, SUM(amount) AS total FROM orders_mini GROUP BY city ORDER BY total DESC LIMIT 1;
+What row is returned?",Delhi | 1800,Delhi | 1500,Pune | 2350,Pune | 1200,C,Pune 1200+450+700 = 2350; Delhi 1800; Mumbai 800. Highest is Pune.,Run in SQLite on the shown table
+Q035,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT category, COUNT(*) FROM orders_mini GROUP BY category HAVING COUNT(*) >= 2;
+How many rows does this return?",3,1,2,6,C,"Counts: Fashion 3, Books 2, Home 1. HAVING keeps groups with at least 2 → Fashion and Books.",Run in SQLite on the shown table
+Q036,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT AVG(amount) FROM orders_mini WHERE city = 'Delhi';
+What is the result?",1800,750,825,900,D,Delhi amounts are 300 and 1500; average = 1800 / 2 = 900.,Run in SQLite on the shown table
+Q037,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT order_id FROM orders_mini WHERE city IN ('Pune','Mumbai') ORDER BY amount LIMIT 1;
+What is returned?",1,3,4,2,B,"Pune/Mumbai amounts: 1200, 450, 800, 700. Smallest is 450 → order 3.",Run in SQLite on the shown table
+Q038,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT COUNT(DISTINCT city) FROM orders_mini;
+What is the result?",3,2,6,4,A,"Distinct cities: Pune, Delhi, Mumbai.",Run in SQLite on the shown table
+Q039,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT COUNT(*) FROM orders_mini WHERE amount BETWEEN 450 AND 800;
+What is the result?",2,3,4,1,B,"BETWEEN includes both ends: 450, 800 and 700.",Run in SQLite on the shown table
+Q040,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT SUM(CASE WHEN amount >= 1000 THEN 1 ELSE 0 END) FROM orders_mini;
+What is the result?",1,4950,3,2,D,CASE gives 1 for amounts of 1000 or more (1200 and 1500) and 0 otherwise; the sum is 2.,Run in SQLite on the shown table
+Q041,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+SELECT COUNT(*) FROM orders_mini WHERE amount > (SELECT AVG(amount) FROM orders_mini);
+What is the result?",6,3,2,1,C,Average = 4950 / 6 = 825. Amounts above 825: 1200 and 1500.,Run in SQLite on the shown table
+Q042,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+Table cities_mini:
+
+| city | region |
+|---|---|
+| Pune | West |
+| Delhi | North |
+| Chennai | South |
+
+SELECT COUNT(*) FROM orders_mini AS o INNER JOIN cities_mini AS c ON o.city = c.city;
+What is the result?",3,6,5,7,C,"INNER JOIN keeps only matching rows: 3 Pune + 2 Delhi orders. Mumbai has no match, Chennai has no orders.",Run in SQLite on the shown table
+Q043,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+Table cities_mini:
+
+| city | region |
+|---|---|
+| Pune | West |
+| Delhi | North |
+| Chennai | South |
+
+SELECT COUNT(*) FROM orders_mini AS o LEFT JOIN cities_mini AS c ON o.city = c.city;
+What is the result?",3,5,7,6,D,"LEFT JOIN keeps every row of the left table (orders_mini, 6 rows); Mumbai gets NULL region.",Run in SQLite on the shown table
+Q044,M04,SQL,predict-output,"Table orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+Table cities_mini:
+
+| city | region |
+|---|---|
+| Pune | West |
+| Delhi | North |
+| Chennai | South |
+
+SELECT DISTINCT o.city FROM orders_mini AS o LEFT JOIN cities_mini AS c ON o.city = c.city WHERE c.region IS NULL;
+What is returned?",No rows,Mumbai,Pune,Chennai,B,"Only Mumbai has no matching row in cities_mini, so its region is NULL after the LEFT JOIN.",Run in SQLite on the shown table
+Q045,M04,SQL,predict-output,"ShopKart's orders table has 5,000 rows, and 260 of them have rating = NULL. What do SELECT COUNT(*), COUNT(rating) FROM orders; return?",5000 | 5000,5000 | 4740,5000 | 260,4740 | 4740,B,COUNT(*) counts all rows; COUNT(column) skips NULLs: 5000 − 260 = 4740.,Run in SQLite on shopkart.db
+Q046,M04,SQL,scenario,You need ShopKart customers who have never placed an order. Which query pattern is correct?,"orders LEFT JOIN customers, then WHERE customer_id IS NULL","customers LEFT JOIN orders, then WHERE orders.order_id IS NULL",SELECT * FROM customers WHERE order_id = 0,"customers INNER JOIN orders, then WHERE order_id IS NULL",B,The LEFT JOIN keeps all customers; those with no order get NULL order columns. On ShopKart this finds 42 customers.,Run in SQLite on shopkart.db
+Q047,M04,SQL,concept,What is the difference between WHERE and HAVING?,"WHERE works only with numbers, HAVING only with text",They are the same,HAVING filters rows before grouping; WHERE filters groups,WHERE filters rows before grouping; HAVING filters groups after GROUP BY,D,Use WHERE for row conditions and HAVING for conditions on aggregates like COUNT(*) > 500.,Not applicable (concept or scenario question)
+Q048,M04,SQL,concept,"In ShopKart, orders.customer_id refers to customers.customer_id. In the orders table, customer_id is a:",Primary key,Composite key,Foreign key,Index only,C,A foreign key points to the primary key of another table and links the two tables.,Not applicable (concept or scenario question)
+Q049,M04,SQL,concept,Which column is the best primary key for the orders table?,order_date,order_id,city,customer_id,B,"A primary key must be unique for every row; each order has its own order_id, while customers and dates repeat.",Not applicable (concept or scenario question)
+Q050,M04,SQL,concept,Older versions of SQLite do not support RIGHT JOIN. How can you get the same result as A RIGHT JOIN B?,Use INNER JOIN instead,Use FULL JOIN,It is impossible in SQLite,Write B LEFT JOIN A (swap the table order),D,"A RIGHT JOIN B keeps all rows of B, which is exactly B LEFT JOIN A.",Not applicable (concept or scenario question)
+Q051,M04,SQL,concept,What is a CTE (WITH … AS (…)) mainly used for?,Speeding up every query automatically,Creating a permanent table,Deleting duplicate rows,Giving a subquery a name so a long query is easier to read and reuse,D,"A CTE is a named temporary result used inside one query, which makes multi-step logic readable.",Not applicable (concept or scenario question)
+Q052,M05,Python basics,predict-output,"What does this print?
+x = 7 // 2
+print(x)",3.5,1,4,3,D,"// is floor division: 7 divided by 2 is 3.5, rounded down to 3.",Run in Python
+Q053,M05,Python basics,predict-output,"What does this print?
+print(7 % 2)",1,0,3.5,3,A,% gives the remainder: 7 = 2×3 + 1.,Run in Python
+Q054,M05,Python basics,predict-output,"What does this print?
+print(""5"" + ""5"")",55,Error,5 5,10,A,"Both are strings, so + joins them: '55'.",Run in Python
+Q055,M05,Python basics,predict-output,"What does this print?
+print(type(3.0))",<class 'number'>,<class 'float'>,<class 'str'>,<class 'int'>,B,Any number with a decimal point is a float.,Run in Python
+Q056,M05,Python basics,predict-output,"What does this print?
+cities = [""Delhi"", ""Pune"", ""Mumbai""]
+print(cities[-1])",Mumbai,IndexError,Delhi,Pune,A,Index −1 is the last item of a list.,Run in Python
+Q057,M05,Python basics,predict-output,"What does this print?
+cities = [""Delhi"", ""Pune""]
+cities.append(""Jaipur"")
+print(len(cities))",3,2,1,Jaipur,A,"append adds one item, so the list has 3 items.",Run in Python
+Q058,M05,Python basics,predict-output,"What does this print?
+price = {""Saree"": 2258, ""Face Wash"": 300}
+print(price.get(""Tablet"", 0))",None,KeyError,2258,0,D,".get returns the default (0) when the key is missing, instead of raising an error.",Run in Python
+Q059,M05,Python basics,predict-output,"What does this print?
+total = 0
+for q in [2, 1, 3]:
+    total = total + q
+print(total)","[2, 1, 3]",0,3,6,D,"The loop adds 2, then 1, then 3 to total.",Run in Python
+Q060,M05,Python basics,predict-output,"What does this print?
+days = 6
+if days <= 3:
+    print(""Fast"")
+elif days <= 5:
+    print(""Normal"")
+else:
+    print(""Slow"")",Nothing,Slow,Normal,Fast,B,"6 is not ≤ 3 and not ≤ 5, so the else branch runs.",Run in Python
+Q061,M05,Python basics,predict-output,"What does this print?
+def revenue(qty, price, discount=0):
+    return qty * price * (1 - discount)
+print(revenue(2, 500))",900,0,Error: missing discount,1000,D,"discount has a default value of 0, so revenue = 2 × 500 × 1 = 1000.",Run in Python
+Q062,M05,Python basics,predict-output,"What does this print?
+rate = 0.137
+print(f""{rate:.1%}"")",14%,0.137,13.7%,0.1%,C,The format .1% multiplies by 100 and shows one decimal place with a % sign.,Run in Python
+Q063,M05,Python basics,predict-output,"What does this print?
+print(sum(range(1, 5)))",15,5,10,4,C,"range(1, 5) is 1, 2, 3, 4 (the end is not included); the sum is 10.",Run in Python
+Q064,M05,Python basics,predict-output,"Which error does int(""₹1,299"") raise?",ValueError,TypeError,SyntaxError,NameError,A,"The text contains ₹ and a comma, so it is not a valid integer string – a ValueError. Clean the text first.",Run in Python
+Q065,M05,Python basics,predict-output,"What does this print?
+import numpy as np
+prices = np.array([100, 200, 300])
+print((prices * 2).mean())",1200,400.0,[200 400 600],200.0,B,"NumPy multiplies every element: [200, 400, 600]; their mean is 400.0.",Run in Python
+Q066,M05,Python basics,scenario,"You uploaded orders_raw.csv to Colab yesterday. Today pd.read_csv(""orders_raw.csv"") gives FileNotFoundError. What is the most likely reason?",The CSV file is corrupted,pandas is not installed,The Colab runtime restarted and deleted uploaded files – upload it again,read_csv only reads Excel files,C,Files uploaded to the Colab Files pane are lost when the runtime resets.,Not applicable (concept or scenario question)
+Q067,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does df.shape return?","(5, 6)",30,"(6, 5)","(6, 4)",C,"6 rows and 5 columns (order_id, city, category, amount, returned).",Run in Python
+Q068,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does df[df[""city""] == ""Pune""][""amount""].sum() return?",4950,1200,3,2350,D,Pune rows: 1200 + 450 + 700 = 2350.,Run in Python
+Q069,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does round(df.groupby(""category"")[""amount""].mean()[""Fashion""], 2) return?",1166.67,1500,3500,1200,A,"Fashion amounts: 1200, 800, 1500; mean = 3500 / 3 = 1166.67.",Run in Python
+Q070,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does df[""returned""].value_counts()[""Y""] return?",4,2,1,6,B,Orders 1 and 4 are returned.,Run in Python
+Q071,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does df.sort_values(""amount"", ascending=False).iloc[0][""city""] return?",Mumbai,Pune,1500,Delhi,D,"Sorted from highest amount, the first row is order 5 (1500, Delhi).",Run in Python
+Q072,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does df.loc[df[""amount""] > 1000, ""city""].tolist() return?","['Delhi', 'Pune']","[1200, 1500]","['Pune', 'Delhi']",['Pune'],C,"Rows with amount > 1000 are order 1 (Pune) then order 5 (Delhi), in original order.",Run in Python
+Q073,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does df[""category""].nunique() return?",5,2,3,6,C,"Unique categories: Fashion, Books, Home.",Run in Python
+Q074,M06,"Pandas, cleaning, EDA",predict-output,"What does this print?
+import pandas as pd
+s = pd.Series(["" delhi"", ""DELHI"", ""Delhi ""])
+print(s.str.strip().str.title().nunique())",2,1,0,3,B,"After strip and title, all three become 'Delhi', so there is 1 unique value.",Run in Python
+Q075,M06,"Pandas, cleaning, EDA",predict-output,"What does this print?
+import pandas as pd
+d = pd.DataFrame({""id"": [1, 1, 2, 3], ""city"": [""Pune"", ""Pune"", ""Delhi"", ""Pune""]})
+print(len(d.drop_duplicates()))",1,3,4,2,B,Only the second row is an exact copy of the first; 3 rows remain.,Run in Python
+Q076,M06,"Pandas, cleaning, EDA",predict-output,"What does this print?
+import pandas as pd, numpy as np
+d = pd.DataFrame({""discount"": [0.1, np.nan, 0.2, np.nan]})
+print(d[""discount""].isnull().sum(), round(d[""discount""].fillna(0).sum(), 2))",0 0.3,4 0.3,2 0.15,2 0.3,D,"Two values are missing. After fillna(0) the column is 0.1, 0, 0.2, 0, so the sum is 0.3.",Run in Python
+Q077,M06,"Pandas, cleaning, EDA",predict-output,"What does this print?
+import pandas as pd
+days = pd.Series([2, 4, 7])
+print(pd.cut(days, bins=[0, 3, 5, 30], labels=[""Fast"", ""Normal"", ""Slow""]).tolist())","['Fast', 'Fast', 'Slow']","[0, 1, 2]","['Normal', 'Normal', 'Slow']","['Fast', 'Normal', 'Slow']",D,"Bins are (0,3], (3,5], (5,30]: 2 → Fast, 4 → Normal, 7 → Slow.",Run in Python
+Q078,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+A second DataFrame cities has 3 rows: Pune–West, Delhi–North, Chennai–South.
+
+What does len(df.merge(cities, on=""city"", how=""left"")) return?",5,7,3,6,D,A left merge keeps all 6 rows of df; Mumbai gets NaN for region.,Run in Python
+Q079,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+A second DataFrame cities has 3 rows: Pune–West, Delhi–North, Chennai–South.
+
+What does len(df.merge(cities, on=""city"", how=""inner"")) return?",5,3,6,8,A,An inner merge keeps only matching cities: 3 Pune + 2 Delhi rows.,Run in Python
+Q080,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does df.pivot_table(index=""city"", values=""amount"", aggfunc=""sum"").loc[""Delhi"", ""amount""] return?",1500,1800,2,900,B,Delhi amounts 300 + 1500 = 1800.,Run in Python
+Q081,M06,"Pandas, cleaning, EDA",predict-output,"A pandas DataFrame df holds orders_mini:
+
+| order_id | city | category | amount | returned |
+|---|---|---|---|---|
+| 1 | Pune | Fashion | 1200 | Y |
+| 2 | Delhi | Books | 300 | N |
+| 3 | Pune | Books | 450 | N |
+| 4 | Mumbai | Fashion | 800 | Y |
+| 5 | Delhi | Fashion | 1500 | N |
+| 6 | Pune | Home | 700 | N |
+
+What does (df[""returned""] == ""Y"").mean() return (rounded to 2 decimals)?",0.5,0.33,33,2,B,The comparison gives True/False; the mean of True=1/False=0 is 2/6 ≈ 0.33 – the return rate.,Run in Python
+Q082,M06,"Pandas, cleaning, EDA",scenario,"ShopKart's orders_raw.csv has 5,055 rows including 55 exact duplicate rows. After df = df.drop_duplicates(), how many rows remain?",5000,4945,5055,4890,A,"5,055 − 55 duplicates = 5,000 orders.",Run in Python
+Q083,M06,"Pandas, cleaning, EDA",scenario,About 260 ShopKart orders have no rating because the customer did not rate. What is the best handling?,Keep them as missing (NaN) – the value is genuinely unknown,Delete those orders from every analysis,Fill with 0,Fill with 5,A,Filling would invent ratings; deleting would drop real orders from revenue analysis. Keep NaN and let pandas skip it in averages.,Not applicable (concept or scenario question)
+Q084,M06,"Pandas, cleaning, EDA",concept,Why do we convert order_date with pd.to_datetime before analysis?,Because CSV files cannot store dates,To remove duplicates,So pandas understands it as a date and can sort it and extract month or weekday,To make the file smaller,C,Text dates sort alphabetically and cannot give .dt.month; real datetimes can.,Not applicable (concept or scenario question)
+Q121,M07,Data engineering basics,concept,ShopKart's pipeline loads all of yesterday's orders into the warehouse every night at 2 am. What kind of pipeline is this?,Streaming pipeline,Batch pipeline,Machine learning pipeline,A/B test,B,"Batch = a chunk of data moved on a schedule (every night). Streaming moves each event within seconds, e.g. live delivery tracking.",Not applicable (concept or scenario question)
+Q122,M07,Data engineering basics,concept,"In ShopKart's star schema, why does fact_orders store product_id but not product_name or category?",SQLite cannot store text columns,Product names are confidential,"Each product's details are stored once in dim_product and joined by the product_id key, so they are not repeated in every order row",To make the fact table bigger,C,The fact table keeps keys and numbers; descriptions live once in the dimension tables and are joined when needed.,Not applicable (concept or scenario question)
+Q123,M07,Data engineering basics,scenario,At 2 am the pipeline's quality checks find that today's file has duplicate order_ids and some prices of 0. What should a well-built pipeline do?,Load the data anyway and print a warning,Delete the whole warehouse and start again,"Stop with an error, load nothing, and log what failed so someone can fix the source",Remove the quality checks so the run succeeds,C,Quality checks exist to stop bad data reaching analysts. A printed warning at 2 am is read by nobody; raising an error stops the load and the log says why.,Not applicable (concept or scenario question)
+Q124,M07,Data engineering basics,scenario,"Your pipeline works when you click Run in Colab, but the manager wants it to run automatically every night at 2 am. What does a data engineer add?","A scheduler, such as a cron job or an Apache Airflow DAG",A Power BI dashboard,A machine learning model,More quality checks,A,Scheduling is the job of cron or an orchestrator like Airflow (a DAG of tasks with retries and alerts). The other options do not run anything on a timetable.,Not applicable (concept or scenario question)
+Q125,M07,Data engineering basics,predict-output,"The warehouse already holds orders O1, O2 and O3. What does this incremental-load code print?
+import pandas as pd
+loaded = {""O1"", ""O2"", ""O3""}
+new = pd.DataFrame({""order_id"": [""O3"", ""O4"", ""O4"", ""O5""]})
+new = new.drop_duplicates()
+to_add = new[~new[""order_id""].isin(loaded)]
+print(len(to_add))",1,2,3,4,B,"drop_duplicates() leaves O3, O4, O5. O3 is already loaded, so ~isin keeps only O4 and O5: 2 rows.",Run in Python
+Q126,M07,Data engineering basics,predict-output,"fact_orders holds 3 orders. A learner adds 2 new orders with this code. What does it print?
+import sqlite3
+import pandas as pd
+conn = sqlite3.connect("":memory:"")
+old = pd.DataFrame({""order_id"": [""O1"", ""O2"", ""O3""]})
+new = pd.DataFrame({""order_id"": [""O4"", ""O5""]})
+old.to_sql(""fact_orders"", conn, index=False)
+new.to_sql(""fact_orders"", conn, if_exists=""replace"", index=False)
+print(pd.read_sql(""SELECT COUNT(*) AS n FROM fact_orders"", conn)[""n""][0])",5,2,3,"An error, because the table already exists",B,"if_exists=""replace"" drops the old table and writes only the new rows, so 2 remain. An incremental load must use if_exists=""append"" (which would give 5).",Run in Python
+Q085,M08,Visualization & storytelling,concept,You want to compare total revenue across 10 cities. Which chart is best?,Scatter plot,Line chart,Bar chart sorted from highest to lowest,Pie chart with 10 slices,C,Bars make it easy to compare category values; sorting shows the ranking at a glance.,Not applicable (concept or scenario question)
+Q086,M08,Visualization & storytelling,concept,Which chart shows the distribution (shape) of order revenue?,Pie chart,Stacked bar chart,Histogram,Line chart,C,A histogram groups values into bins and shows how often each range occurs.,Not applicable (concept or scenario question)
+Q087,M08,Visualization & storytelling,concept,"Which chart best shows the relationship between discount and quantity for 5,000 orders?",Pie chart,Scatter plot,Bar chart of totals,Histogram of discount only,B,A scatter plot shows each order as a point with two numeric variables on the axes.,Not applicable (concept or scenario question)
+Q088,M08,Visualization & storytelling,concept,Why should you avoid a 3D pie chart?,It cannot show percentages,It only works in Power BI,It uses too much colour,"3D tilting distorts slice sizes, so values are hard to compare",D,Perspective makes front slices look bigger than they are; a sorted bar chart is clearer.,Not applicable (concept or scenario question)
+Q089,M08,Visualization & storytelling,scenario,Which chart title follows the data storytelling rules from this course?,City vs returns (%),Chart 1,Pune returns 1 in 3 orders – more than double any other city,Return rate by city,C,"A takeaway title tells the reader the finding, not just the topic.",Not applicable (concept or scenario question)
+Q090,M08,Visualization & storytelling,concept,"In a bar chart of 10 cities, you colour Pune orange and all other bars grey. Why?",To show Pune is a different data type,To draw attention to the one bar that carries the message,To make the chart print better,Because grey is the default colour,B,A single highlight colour guides the eye to the point of the chart.,Not applicable (concept or scenario question)
+Q091,M08,Visualization & storytelling,concept,"In Power BI, what does a slicer do?",Adds a trend line,"Lets the viewer filter all visuals on the page, e.g. by city",Cuts outliers from the data,Splits a table into two files,B,Slicers are on-page filters that update the connected visuals.,Not applicable (concept or scenario question)
+Q092,M08,Visualization & storytelling,concept,"In seaborn, what does sns.countplot(data=df, x=""payment_mode"") show?",A line over time,The correlation between payment modes,The average revenue per payment mode,The number of rows (orders) for each payment mode,D,countplot counts rows in each category – no y column is needed.,Not applicable (concept or scenario question)
+Q093,M08,Visualization & storytelling,concept,"A y-axis on a revenue bar chart starts at ₹90,000 instead of 0. What is the problem?",It shows the true size of differences,Nothing – it saves space,"Small differences look huge, which misleads the reader",The bars will not appear,C,Bar lengths must start at zero to be compared honestly.,Not applicable (concept or scenario question)
+Q094,M08,Visualization & storytelling,scenario,You have 2 minutes to present to a busy manager. What is the best order?,"Main finding first, then supporting evidence, then the recommended action","The code first, then the charts","Data cleaning steps first, findings at the end","All the charts you made, in the order you made them",A,"Lead with the answer, support it, then say what to do – the structure used in Video 8.5 and the capstone deck.",Not applicable (concept or scenario question)
+Q095,M09,Intro ML,concept,Predicting the revenue of an order (a number) is which type of problem?,Regression,Data cleaning,Clustering,Classification,A,Regression predicts a numeric value; classification predicts a category such as returned Y/N.,Not applicable (concept or scenario question)
+Q096,M09,Intro ML,concept,Predicting whether an order will be returned (Y/N) is which type of problem?,Clustering,Classification,Regression,Correlation,B,The target is a category with two classes.,Not applicable (concept or scenario question)
+Q097,M09,Intro ML,predict-output,"ShopKart has 5,000 orders. train_test_split(X, y, test_size=0.2, random_state=42) puts how many rows in the test set?",200,800,4000,1000,D,"20% of 5,000 = 1,000 test rows; 4,000 go to training.",Run in Python
+Q098,M09,Intro ML,predict-output,A linear regression learnt: revenue = 200 + 3 × list_price. What does it predict for list_price = 1000?,1200,600,3000,3200,D,200 + 3 × 1000 = 3200.,Run in Python
+Q099,M09,Intro ML,predict-output,"A return model's confusion matrix on a test set: True negatives 576, False positives 287, False negatives 61, True positives 76. What is the recall (to 1 decimal)?",88.3%,20.9%,55.5%,65.2%,C,Recall = TP / (TP + FN) = 76 / 137 = 55.5%.,Run in Python
+Q100,M09,Intro ML,predict-output,"Same confusion matrix: TN 576, FP 287, FN 61, TP 76. What is the precision (to 1 decimal)?",26.5%,55.5%,65.2%,20.9%,D,Precision = TP / (TP + FP) = 76 / 363 = 20.9%.,Run in Python
+Q101,M09,Intro ML,predict-output,"Same confusion matrix: TN 576, FP 287, FN 61, TP 76. What is the accuracy (to 1 decimal)?",20.9%,55.5%,65.2%,86.3%,C,Accuracy = (TN + TP) / total = 652 / 1000 = 65.2%.,Run in Python
+Q102,M09,Intro ML,scenario,Only 13.7% of ShopKart orders are returned. A model has 86% accuracy. Why is this NOT enough to call it good?,86% is always excellent,A model that always says 'not returned' also gets about 86% accuracy while catching zero returns,Accuracy cannot be computed for classification,Accuracy above 80% guarantees good recall,B,"With a rare class, check the baseline and look at recall and precision.",Not applicable (concept or scenario question)
+Q103,M09,Intro ML,scenario,You add 'rating' as a feature to predict returns and recall jumps from 0.42 to 0.89. What is going on?,The model is now excellent and ready to use,"Data leakage – rating is given after delivery, so it is not available when predicting at order time",The test set is too small,Rating is the true cause of returns,B,Rating is strongly linked to the return because it is recorded around the same time; it cannot be used for real predictions.,Not applicable (concept or scenario question)
+Q104,M09,Intro ML,scenario,A decision tree scores 99% accuracy on training data and 70% on test data. What is the most likely problem?,The test set has leakage,Overfitting – the tree memorised the training data,The data has no missing values,Underfitting – the model is too simple,B,A big gap between training and test performance is the classic sign of overfitting; limit max_depth.,Not applicable (concept or scenario question)
+Q105,M09,Intro ML,concept,Why do we set random_state=42 in train_test_split and in models?,Because 42 gives the highest accuracy,To remove random rows,To use 42% of the data for testing,So the split (and results) are the same every time the code runs,D,"A fixed random_state makes results reproducible, so your numbers match the video.",Not applicable (concept or scenario question)
+Q106,M09,Intro ML,concept,What does stratify=y do in train_test_split?,Balances the classes to 50/50,Keeps the same share of each class (e.g. returns) in train and test sets,Sorts the data by y,Removes the target column,B,Stratifying keeps the 13.7% return rate in both parts.,Not applicable (concept or scenario question)
+Q107,M09,Intro ML,predict-output,"pd.get_dummies on a 'category' column with 5 categories (Beauty, Books, Electronics, Fashion, Home) with drop_first=True creates how many columns?",10,5,4,1,C,One 0/1 column per category minus the first one dropped: 5 − 1 = 4.,Run in Python
+Q108,M09,Intro ML,concept,What does a logistic regression classifier output before it decides Y or N?,A cluster number,A probability between 0 and 1,A straight-line revenue value,A correlation coefficient,B,It predicts the probability of the positive class; by default ≥ 0.5 becomes 'Y'.,Not applicable (concept or scenario question)
+Q109,M09,Intro ML,concept,"What does class_weight=""balanced"" do for a return model where returns are rare?",Turns the model into regression,Deletes extra 'No' rows,Doubles the size of the test set,"Makes mistakes on the rare class count more, so the model tries harder to catch returns",D,"It weights classes inversely to their frequency, usually raising recall on the rare class.",Not applicable (concept or scenario question)
+Q110,M10,Capstone,scenario,"In the capstone, 'revenue lost to returns' was defined as the total revenue of returned orders. Which assumption must be stated with it?",All returned items are resold at full price,Profit equals revenue,Returned orders are fully refunded; return shipping and resale are ignored,Only Pune orders are counted,C,The definition is an estimate; stating the full-refund assumption lets the manager judge it.,Not applicable (concept or scenario question)
+Q111,M10,Capstone,scenario,Pune has a 32.4% return rate and slow delivery (5.77 days on average). Lucknow and Jaipur are just as slow but return about 13%. What is the best conclusion?,Pune should be removed from the analysis,Slow delivery is proven to cause Pune's returns,Slow delivery alone does not explain Pune – recommend an audit of Pune operations,Lucknow data must be wrong,C,Comparing with equally slow cities rules out delivery speed as the full explanation.,Run in SQLite on shopkart.db
+Q112,M10,Capstone,concept,"After joining orders (5,000 rows) with products and customers, the result has 5,600 rows. What does this suggest?",A join condition is wrong and is duplicating rows,SQL always adds rows when joining,Customers placed more orders than expected,The join worked perfectly,A,Each order should appear once; a row-count check after joins catches wrong ON conditions.,Not applicable (concept or scenario question)
+Q113,M10,Capstone,predict-output,"ShopKart has 5,000 orders, of which 687 are returned. In pandas, is_returned is 1 for returned and 0 otherwise. What is df[""is_returned""].mean() (rounded to 3 decimals)?",687,0.137,0.863,13.7,B,The mean of a 0/1 column is the share of 1s: 687 / 5000 = 0.137.,Run in SQLite on shopkart.db
+Q114,M10,Capstone,scenario,Logistic regression had recall 55.5% and precision 20.9%; the decision tree had recall 41.6% and precision 24.5%. A missed return costs the whole order; a false alarm costs one confirmation call. Which should ShopKart use?,Decision tree – higher precision always wins,Neither – accuracy is what matters,Whichever was trained first,Logistic regression – it catches more returns and false alarms are cheap,D,"When missing a positive is costly and a false alarm is cheap, prefer higher recall.",Not applicable (concept or scenario question)
+Q115,M10,Capstone,concept,What is the very first step when you receive a one-line business brief?,Train a model immediately,Collect more data,Open Colab and start plotting,Split it into specific questions (a question tree) and plan data and method for each,D,Planning turns a vague brief into answerable questions and tells you which tables and joins you need.,Not applicable (concept or scenario question)
+Q116,M10,Capstone,concept,Which slide title follows the capstone presentation rules?,Returns analysis,Slide 1 – Overview,Returns cost ShopKart ₹21.5 lakh of revenue in 2025,Data and methods,C,Slide titles should be full-sentence takeaways with a number.,Run in SQLite on shopkart.db
+Q117,M10,Capstone,concept,Which feature set is acceptable for predicting returns at the moment an order is placed?,"rating, delivery_days, returned","category, city, payment_mode, delivery_days, discount, membership","rating, category, city","returned, city, discount",B,Only information known at order time may be used; rating and returned itself are not.,Not applicable (concept or scenario question)
+Q118,M10,Capstone,scenario,"In your FitGym capstone, branch values include 'Gurgaon', 'gurgaon' and 'Gurugram'. What should you do?",Leave them – they are different branches,Replace all of them with 'Unknown',"Strip spaces, standardise case, and map Gurugram to Gurgaon so one branch has one name",Delete rows with lowercase names,C,These are the same branch spelt differently; standardising avoids splitting one group into three.,Run in Python
+Q119,M11,Career & certificate,scenario,Which resume bullet is strongest for a fresher analyst?,Good knowledge of data analysis,"Used Python, SQL, Excel, Power BI, Tableau, R, Spark",Did a project on returns,"Analysed 5,000 orders with SQL and pandas; found one city drove 25% of revenue lost to returns",D,Action verb + tool + number + business result makes a bullet believable.,Not applicable (concept or scenario question)
+Q120,M11,Career & certificate,concept,"When adding the course certificate to LinkedIn under Licences & certifications, which field lets a recruiter verify it?",Profile photo,Skills section only,Credential ID and Credential URL,Profile headline,C,The Credential ID (e.g. DSA-2026-000123) and URL link to the verification page.,Not applicable (concept or scenario question)

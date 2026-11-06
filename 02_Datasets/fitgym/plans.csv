@@ -1,0 +1,5 @@
+plan_id,plan_name,duration_months,monthly_fee
+PL1,Monthly,1,1500
+PL2,Quarterly,3,1300
+PL3,Half-Yearly,6,1150
+PL4,Annual,12,1000

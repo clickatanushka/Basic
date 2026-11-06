@@ -1,0 +1,12 @@
+05:22:51  PIPELINE START
+05:22:51  EXTRACT  orders_raw.csv: 5055 rows | customers: 800 | products: 60
+05:22:51  TRANSFORM  5055 raw rows -> 5000 clean rows, 21 columns
+05:22:51  QUALITY CHECKS  all 7 passed
+05:22:51  LOAD  shopkart_warehouse.db: fact_orders 5000, dim_customer 800, dim_product 60, dim_date 336 rows | shopkart_clean.csv (5000, 21)
+05:22:51  INCREMENTAL LOAD  starting with new_orders_2026_01.csv
+05:22:51  EXTRACT  new_orders_2026_01.csv: 40 rows | customers: 800 | products: 60
+05:22:51  TRANSFORM  40 raw rows -> 38 clean rows, 21 columns
+05:22:51  QUALITY CHECKS  all 7 passed
+05:22:51  INCREMENTAL LOAD  40 rows in file, 2 duplicate rows removed | added 36 new orders | skipped 2 already in warehouse | added 21 new dates
+05:22:51  WAREHOUSE TABLES  {'fact_orders': 5036, 'dim_customer': 800, 'dim_product': 60, 'dim_date': 357}
+05:22:51  PIPELINE END  success

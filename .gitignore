@@ -1,0 +1,5 @@
+.claude/
+project/.venv/
+__pycache__/
+.~lock*
+*.pyc

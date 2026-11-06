@@ -1,0 +1,250 @@
+## out/m01_s14.png — narration while this diagram is on screen
+    Let me draw the full journey of data. [Board: draw six boxes left to right]
+    Every piece of data goes through six stages. Collect. Store. Clean. Analyse. Model. Communicate.
+    [Board: under each box write the ShopKart example]
+    Collect: a customer places an order in the ShopKart app. Store: that order is saved in the orders table of a database. Clean: someone fixes problems, like "Bombay" and "Mumbai" being the same city. Analyse: we calculate revenue by city, or return rate by city. Model: we predict which orders will be returned. Communicate: we show a dashboard to the managers.
+    [Board: draw brackets]
+    Now, who does what? The engineer owns collect, store, and much of the cleaning. The analyst cleans, analyses and communicates. The scientist analyses, builds models and communicates. See the overlap? Cleaning and communicating are everybody's job.
+    [Board: draw an arrow from Communicate back to Collect]
+    And this is a cycle. Managers make a decision, for example a faster courier in one city, and that creates new data. The journey starts again.
+
+## out/m02_s13.png — narration while this diagram is on screen
+    [Board: draw a grid, columns A B C, rows 1 to 3, numbers in A and B]
+    Here is a tiny sheet. Column A has quantities, column B has prices. In C1, I write equals A1 times B1. Now I drag it down. [Board: arrows] In C2, the formula becomes A2 times B2. In C3, A3 times B3. The references moved down with the row. That is called a relative reference, and most of the time it is exactly what we want: each row uses its own values.
+    [Board: new grid, B1 holds 18%, write =A1*B1 in C1, drag down, cross out B2 and B3]
+    But now suppose B1 holds a tax rate of 18%, and every row should use that same rate. I write A1 times B1 and drag down. In C2 it becomes A2 times B2, and B2 is empty. Zero! Wrong answer, and no error message.
+    [Board: write =A1*B1]
+    So we pin B1 with dollar signs: dollar B dollar 1. Now when I drag down, A1 changes to A2, A3, but dollar B dollar 1 stays B1. [Board: write $ before letter = pin column; $ before number = pin row]
+    The rule: a dollar in front of the letter pins the column. A dollar in front of the number pins the row. Both dollars pin the whole cell. [Board: write A1 → A1 → A$1 → $A1] And you never need to type the dollars yourself: put the cursor on the reference and press F4. Each press cycles through these four versions. Remember: dollar means "do not move". We will use this all through the next video.
+
+## out/m02_s20.png — narration while this diagram is on screen
+    [Board: left, an orders row: D2 = P048. Right, products table: product_id | product_name | category]
+    On the left, an order with product ID P048. On the right, the products table. XLOOKUP goes to the products table, [Board: arrow down the product_id column] looks down the product_id column until it finds P048, [Board: arrow across to category] then steps across the same row to the category column and brings back "Books". [Board: write =XLOOKUP(D2, products!A:A, products!C:C, "Not found")] Four parts: what to find, where to look, what to return, and what to say if it is not there. Older tools do the same with VLOOKUP or INDEX and MATCH; they are in the notes, in case your office uses an older Excel.
+
+## out/m03_s04.png — narration while this diagram is on screen
+    Let me draw this as a tree, because a picture is easier to remember. [Board: box "Data" at the top] At the top, Data. [Board: two branches] Two branches: Categorical on the left, Numerical on the right.
+    [Board: under Categorical write "Nominal – city, payment" and "Ordinal – rating"] Under categorical: nominal, no order, like city or payment mode. Ordinal, has an order, like rating. Binary, like returned, is just nominal with two groups.
+    [Board: under Numerical write "Discrete – quantity" and "Continuous – revenue"] Under numerical: discrete, counted, like quantity. Continuous, measured, like revenue.
+    [Board: write "order_id = O10001 → label!"] And now a warning in red. Order ID, customer ID, PIN code, mobile number: they look like numbers, but they are labels. They just identify something. Adding or averaging them gives nonsense.
+    [Board: write "Type decides the maths"] Here is why this matters. For labels, we count and take percentages: how many orders from Delhi, what share of orders are COD. For numbers, we can add, average and measure spread. Every statistic in this module starts with this decision.
+
+## out/m03_s07.png — narration while this diagram is on screen
+    [Board: write 500, 700, 800, 900, 1,100]
+    Five small orders, in rupees: 500, 700, 800, 900 and 1,100.
+    [Board: write Mean = (500+700+800+900+1100) ÷ 5 = 4,000 ÷ 5 = 800]
+    The mean, what we usually call the average: add them all up, 4,000, and divide by how many there are, 5. Answer: 800.
+    [Board: circle the middle value 800, write Median = 800]
+    The median is the middle value after sorting from smallest to largest. The middle one is 800. So mean and median agree.
+    [Board: add 1,50,000 at the end of the row]
+    Now a company places a bulk order for phones: 1 lakh 50 thousand rupees. Six orders.
+    [Board: write 1,54,000 ÷ 6 = 25,667]
+    New mean: 1 lakh 54 thousand divided by 6, which is 25,667 rupees. [Board: underline twice] Does any of our six orders look like 25,667? No! The mean describes nobody. One big order dragged it up.
+    [Board: write 500 700 800 | 900 1,100 1,50,000; (800 + 900) ÷ 2 = 850]
+    The median: with six values there are two in the middle, 800 and 900. Their average is 850. It barely moved from 800.
+    [Board: write in big letters: "Median resists outliers. Mean does not."]
+    That is the most important sentence of this video. An outlier is a value far away from the rest. The mean uses every value, so one outlier can pull it a long way. The median only cares about the middle position, so outliers hardly affect it.
+    [Board: write "Mode = most frequent value"]
+    The third measure, the mode, is the value that appears most often. It is useful for categories, like the most common city, or for small whole numbers, like how many items people usually buy.
+
+## out/m03_s12.png — narration while this diagram is on screen
+    [Board: two number lines from 1 to 7; City X: five dots at 4; City Y: dots at 1, 2, 4, 6, 7]
+    Two cities. City X delivers five parcels in 4, 4, 4, 4 and 4 days. City Y in 1, 2, 4, 6 and 7 days. Both add up to 20, divided by 5: 4. Same average!
+    [Board: circle the cluster in X, draw arrows across the spread in Y]
+    But in X, every parcel lands on the same day. In Y, they are all over the place. For a birthday gift, you would trust City X. So we need numbers that measure this spread.
+    [Board: write Range = max − min; X: 4 − 4 = 0; Y: 7 − 1 = 6]
+    The simplest one is the range: the biggest value minus the smallest. City X: zero. City Y: 6 days. But the range only looks at the two extremes, so one crazy value makes it huge. ShopKart's revenue range is almost 1.5 lakh rupees, just because of one bulk order.
+
+## out/m03_s13.png — narration while this diagram is on screen
+    [Board: Step 1: mean = 4]
+    Step one: find the mean. 4.
+    [Board: Step 2: 1−4, 2−4, 4−4, 6−4, 7−4 → −3, −2, 0, 2, 3]
+    Step two: how far is each value from the mean? Minus 3, minus 2, 0, plus 2, plus 3.
+    [Board: Step 3: 9, 4, 0, 4, 9 → total 26 → 26 ÷ 4 = 6.5 = variance]
+    Step three: if we just added these gaps, they would cancel to zero. So we square them first: 9, 4, 0, 4, 9. Total: 26. Divide by n minus 1, that is 4, and we get 6.5. This is called the variance. The n minus 1 is a small correction because we usually work with a sample; Sheets does it for you.
+    [Board: Step 4: √6.5 = 2.55 days = SD]
+    Step four: take the square root. The square root of 6.5 is 2.55. That is the standard deviation: 2.55 days. The square root turns "days squared" back into days. So in City Y, a parcel is typically about two and a half days away from the average.
+    You will never do this by hand at work. In Google Sheets it is one word: STDEV.
+
+## out/m03_s15.png — narration while this diagram is on screen
+    [Board: number line from 2 to 12]
+    A number line for delivery days, 2 to 12. [Board: draw a box from 3 to 5, a thick line at 4] A box from Q1, 3, to Q3, 5: the middle half of orders live inside it. A line at the median, 4. [Board: whisker from 3 down to 2, from 5 up to 8] Whiskers down to the smallest value, 2, and up to the fence, 8. [Board: dots at 9, 10, 11, 12] Beyond the fence, each value gets a dot: 9, 10, 11 and 12 days. Those 36 late orders.
+    In one glance, you see the typical range and the problems. Box plots shine side by side, one box per city; we do that in Python in Module 8.
+
+## out/m03_s18.png — narration while this diagram is on screen
+    [Board: a symmetric bell curve]
+    Heights, exam marks, small measurement errors: many things make this bell shape. Most values sit in the middle, fewer as you go out, and both sides look the same. This is called the normal distribution.
+    [Board: vertical line in the centre, label "mean = median = mode"]
+    In a perfect bell, the mean, the median and the mode are all at the middle.
+    [Board: shade ±1 SD, write 68%; wider ±2 SD, write 95%]
+    And a handy rule: about 68% of all values lie within one standard deviation of the mean, and about 95% within two. So if exam marks have mean 60 and SD 10, about two thirds of students scored between 50 and 70, and almost everybody between 40 and 80.
+    [Board: a hill on the left with a long tail to the right; label "right skew"]
+    Now a big hill on the left, and a long tail to the right. We call it right-skewed, or positively skewed. [Board: mark median at the hill, mean further right with an arrow] The few large values in the tail pull the mean to the right of the median. Money is almost always shaped like this: salaries, house prices, order values.
+    [Board: mirror image, tail to the left; label "left skew"]
+    And the mirror image, left-skewed. Ratings often look like this: most people give 4 or 5 stars, and a few unhappy customers give 1 or 2.
+
+## out/m03_s22.png — narration while this diagram is on screen
+    [Board: horizontal line, −1 at the left, 0 in the middle, +1 at the right]
+    When two numeric columns move together, we measure it with the correlation coefficient, or simply r. It is always between minus 1 and plus 1.
+    [Board: above +1, a small scatter of dots rising in a straight line]
+    Plus 1 is a perfect positive relationship: when one goes up, the other always goes up, in a straight line. Like the number of identical books in a parcel and its weight.
+    [Board: above −1, dots falling in a straight line]
+    Minus 1 is a perfect negative relationship: when one goes up, the other always goes down. Like a van's speed and the time it takes to cover 10 kilometres.
+    [Board: above 0, a round cloud of dots]
+    Zero means no straight-line pattern. Like a customer's shoe size and their favourite product category.
+    [Board: mark bands below the line: 0–0.1 none, 0.1–0.3 weak, 0.3–0.6 moderate, 0.6–1 strong, on both sides]
+    Real data is never perfect. A rough guide for the size of r, ignoring the sign: below 0.1, basically nothing. 0.1 to 0.3, weak. 0.3 to 0.6, moderate. Above 0.6, strong. The sign tells the direction; the size tells the strength.
+    [Board: write "r = −0.33 ≠ 33%" and circle it]
+    And one trap right away: a correlation of minus 0.33 does not mean "33 percent less". It is a strength score, not a percentage.
+
+## out/m03_s28.png — narration while this diagram is on screen
+    [Board: a row of stick figures arriving; a coin]
+    Visitors arrive at the checkout page. For each visitor, the website flips a coin.
+    [Board: arrow to group A box "old grey Proceed button"; arrow to group B box "new orange Place order button"]
+    Heads, group A: the old grey "Proceed" button. Tails, group B: the new orange "Place order" button.
+    [Board: write "Only the button differs"]
+    Same products, same prices, same days, same delivery promises. Only the button is different.
+    [Board: under each group, a tally of orders]
+    For two weeks, we count how many visitors in each group place an order.
+    [Board: write "Random split → a real difference must come from the button (or luck)"]
+    Because a coin decided who saw which button, the two groups are alike in every other way: same mix of cities, ages, rich and budget shoppers. So if group B orders more, there are only two explanations: the button, or luck. That is why an experiment can prove cause, while correlation cannot.
+
+## out/m04_s05.png — narration while this diagram is on screen
+    [Slide 5] [Board: draw three boxes side by side. Label the left box "customers", middle box "orders", right box "products".]
+    Three tables. Inside customers: customer_id, name, gender, age, city, signup_date, membership. [Board: underline customer_id, write "PK" next to it.] customer_id is the primary key – I underline it.
+    [Board: in products box write product_id, product_name, category, list_price, cost_price; underline product_id, write "PK".] In products, product_id is the primary key.
+    [Board: in orders box write order_id (underline, PK), order_date, customer_id, product_id, quantity, unit_price, discount, city, payment_mode, delivery_days, rating, returned.] In orders, order_id is the primary key. But orders also has customer_id and product_id. [Board: write "FK" next to customer_id and product_id in orders.] These are foreign keys.
+    [Board: draw an arrow from orders.customer_id to customers.customer_id.] The customer_id in an order points to exactly one customer. [Board: draw an arrow from orders.product_id to products.product_id.] And the product_id points to one product.
+    [Board: write "1" at the customers end of the arrow and "many" at the orders end. Same for products.] One customer can have many orders; one product can appear in many orders. A one-to-many relationship. This drawing – tables, columns, keys and arrows – is the schema, the map of the database. When we do JOINs, we'll just follow these arrows.
+    Why not one big sheet? A customer with 20 orders would have their name typed 20 times. Separate tables store each fact once.
+
+## out/m04_s20.png — narration while this diagram is on screen
+    [Slide 20] [Board]
+    But the manager asked per city. Let me draw what GROUP BY does.
+    [Board: write a 6-row table with columns order_id, city, revenue: O10001 Delhi 1,737.60; O10002 Chennai 570.00; O10003 Delhi 2,145.10; O10005 Chennai 3,486.60; O10006 Delhi 2,736.00; O10008 Pune 14,098.95.]
+    Six real orders. [Board: draw three bucket shapes labelled Delhi, Chennai, Pune.] GROUP BY city means: drop each row into the bucket of its city. [Board: draw arrows from each row to its bucket – O10001, O10003, O10006 into Delhi; O10002, O10005 into Chennai; O10008 into Pune.] O10001 – Delhi. O10002 – Chennai. O10003 – Delhi again. And so on.
+    [Board: under Delhi write "COUNT = 3, SUM = 6,618.70"; under Chennai "COUNT = 2, SUM = 4,056.60"; under Pune "COUNT = 1, SUM = 14,098.95".] Then the aggregate runs per bucket. Delhi: 3 orders, ₹6,618.70. Chennai: 2 orders, ₹4,056.60. Pune: 1 big order, ₹14,098.95.
+    [Board: circle the whole thing and write "6 rows in → 3 rows out".] Six rows in, three rows out – one per bucket. One rule: in SELECT, show only the bucket label or an aggregate. Not order_id – the Delhi bucket has three. Other databases give an error; SQLite quietly picks one, which is even more dangerous.
+    Pause and try: revenue per city, highest first.
+
+## out/m04_s22.png — narration while this diagram is on screen
+    [Slide 22] [Board]
+    Why WHERE before GROUP BY, but HAVING after? Because SQL doesn't run your query in the order you type it.
+    [Board: write on the left, top to bottom: SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY. Label it "Order we TYPE".]
+    The order we type. Now the order SQL runs. [Board: next to each line write a number in a circle: FROM = 1, WHERE = 2, GROUP BY = 3, HAVING = 4, SELECT = 5, ORDER BY = 6.]
+    Q11 step by step. FROM: the orders table – [Board: draw a tall rectangle labelled "5,000 rows"]. WHERE: keep returned orders – [Board: draw a shorter rectangle "687 returned rows"]. GROUP BY: city buckets – [Board: draw 10 small boxes "10 city buckets"]. HAVING: drop buckets under 60 – [Board: cross out 5 boxes, "5 cities left"]. Then SELECT calculates the columns and aliases, and ORDER BY sorts.
+    [Board: draw a star next to SELECT (5) and WHERE (2).] Two lessons. COUNT can't go in WHERE, because at step 2 the groups don't exist yet. And an alias made in SELECT, step 5, can't be used in WHERE, step 2 – but it can in ORDER BY, step 6. That's why we could sort by revenue last video. Understand this picture, and you'll fix half of all SQL errors yourself.
+
+## out/m04_s28.png — narration while this diagram is on screen
+    [Slide 28] [Board]
+    Let me draw it with tiny tables. [Board: on the left draw an "orders" table with columns order_id, product_id, quantity and rows: O10002 P049 2; O10003 P020 1; O10004 P026 2; O10005 P026 2.]
+    Four real orders. [Board: on the right draw a "products" table with columns product_id, product_name, category and rows: P020 Saree Fashion; P026 Pressure Cooker Home; P049 Face Wash Beauty.]
+    Three real products. The matching rule: orders.product_id equals products.product_id. Row by row, like SQL. [Board: draw a line from O10002's P049 to the P049 row.] O10002 has P049 – Face Wash, Beauty. Match. [Board: line from O10003's P020 to P020.] O10003 – P020 – Saree, Fashion. [Board: lines from O10004 and O10005 both to P026.] O10004 and O10005 both have P026 – two lines to the same Pressure Cooker row.
+    [Board: below, draw the result table with columns order_id, quantity, product_name, category: O10002 2 Face Wash Beauty; O10003 1 Saree Fashion; O10004 2 Pressure Cooker Home; O10005 2 Pressure Cooker Home.]
+    The joined result: four rows, one per order. Pressure Cooker appears twice because two orders bought it – one product, many orders. [Board: circle the two Pressure Cooker rows.] That's not a duplicate problem; it's correct.
+    What if an order had a product_id like P999 that isn't in products? Pause and think… With INNER JOIN, that order disappears. INNER means: keep only rows that match on both sides. [Board: write "INNER = only matches".] That becomes important next video.
+
+## out/m04_s33.png — narration while this diagram is on screen
+    [Slide 33] [Board]
+    [Board: on the left draw "customers" with rows: C0006 Siddharth; C0007 Rohan; C0008 Isha; C0009 Nisha.] Four real customers. [Board: on the right draw "orders" with rows: O10204 C0006; O10904 C0007; O11127 C0009; O11367 C0007.] And some of their orders. Is there any order for C0008? No.
+    [Board: draw matching lines: C0006 → O10204, C0007 → O10904 and O11367, C0009 → O11127. Draw a small cross next to C0008.] Siddharth matches one order. Rohan matches two. Nisha matches one. Isha – nothing. Cross.
+    [Board: below left, write "INNER JOIN result": C0006 O10204; C0007 O10904; C0007 O11367; C0009 O11127.] INNER JOIN: four rows. Isha is gone, as if she never existed.
+    [Board: below right, write "LEFT JOIN result": the same four rows plus "C0008 Isha | NULL".] LEFT JOIN keeps every row from the left table, customers, no matter what. Isha stays. She has no order, so SQL fills order_id with NULL. [Board: circle the NULL in red.]
+    [Board: write "WHERE order_id IS NULL → only C0008".] And the trick: add WHERE order_id IS NULL, and you get only the customers with no orders. "LEFT JOIN, then IS NULL" is how analysts find what's missing – customers who never bought, products that never sold. Remember it.
+
+## out/m05_s08.png — narration while this diagram is on screen
+    [Slide 8] [Board: draw four boxes in a row]
+    A variable is just a box with a label. [Board: label the boxes order_id, city, quantity, unit_price] Let's take one real ShopKart order, O10006. [Board: write "O10006" in the first box, "Delhi" in the second, 2 in the third, 1440 in the fourth] Two pairs of Denim Jeans, Delhi, 1,440 rupees each.
+    In Python I write: order_id equals "O10006". [Board: draw arrow from right to left into the box] Now, careful. In Python, this equals sign does not mean "equals" like in maths. It means: take the value on the right and put it into the box on the left. Store it.
+    [Board: write revenue = 2 × 1440 × 0.95 = 2736.0] Once values are in boxes, we can calculate with the labels. Revenue equals quantity into unit price into 1 minus discount. 2 into 1440 into 0.95. 2,736 rupees. Same formula as our Excel revenue column in Module 2.
+
+## out/m05_s14.png — narration while this diagram is on screen
+    [Slide 14] [Board: draw six boxes in a row; write 1737.6, 570.0, 2145.1, 3434.0, 3486.6, 2736.0]
+    These are the revenues of the first six ShopKart orders of 2025 – O10001 to O10006. A list keeps them in order under one name. Now, how do we point to one value? By position. [Board: write 0, 1, 2, 3, 4, 5 under the boxes] And here's the thing that confuses everyone: Python counts from zero. The first box is position 0. The sixth box is position 5. [Board: write -1 under the last box] And minus 1 means "the last one". Handy when you don't know the length.
+    [Board: draw a bracket under boxes 0 to 2, write order_amounts[0:3]] A slice, zero colon three, gives positions 0, 1 and 2. The stop number is not included. Think of it as "start at 0, stop before 3".
+
+## out/m05_s21.png — narration while this diagram is on screen
+    [Slide 21] [Board: draw a diamond, write "revenue >= 5000?"]
+    Let's draw the decision. First question: is revenue at least 5,000? [Board: arrow right labelled Yes → box "Big"] If yes – Big, and we stop. [Board: arrow down labelled No → second diamond "revenue >= 1000?"] If no, we ask the second question: at least 1,000? [Board: Yes → "Medium", No → "Small"] Yes – Medium. No – Small.
+    [Board: write ₹3,434 at the top, trace it] Let's trace order O10004, 3,434 rupees. Is it 5,000 or more? No. Is it 1,000 or more? Yes. Medium. Python checks from the top and stops at the first yes.
+
+## out/m05_s23.png — narration while this diagram is on screen
+    [Slide 23] [Board: draw a table with columns amount, total, big_orders; start row total 0, big 0]
+    Now loops. A for loop says: for each item in this list, do this block. Let's trace it by hand first. total starts at 0, big_orders at 0. [Board: row 1: 1737.6 | 1737.6 | 0] First amount, 1737.6. Add it – total is 1737.6. Is it 5,000 or more? No. [Board: row 2: 570.0 | 2307.6 | 0] Next, 570. Total 2307.6. [Board: row 3: 2145.1 | 4452.7 | 0] Next, 2145.1, total 4452.7. [Board: skip to row 7: 24484.8 | … | 1] And when we reach 24,484.8 – that's the two-Smartphone order – big_orders becomes 1. The computer just does this very fast.
+
+## out/m06_s03.png — narration while this diagram is on screen
+    [Slide 3] [Board: draw a grid with 4 columns: order_id, city, quantity, unit_price; 4 rows]
+    This is a DataFrame. It's a table: rows and columns. [Board: write 0, 1, 2, 3 down the left edge] On the left, pandas adds row labels – 0, 1, 2, 3. This is called the index. [Board: fill row 0: O10001, Delhi, 6, 362; row 2: O10003, DELHI, 1, 2258] Each row is one order. [Board: circle the city column] And one column on its own is called a Series. [Board: write at top "df.shape = (rows, columns)"] The size of the table is its shape: rows comma columns.
+
+## out/m06_s20.png — narration while this diagram is on screen
+    [Slide 20] [Board: draw a number line from 17 to 60]
+    Last tool: pd dot cut, to turn numbers into groups. Our customers are 18 to 57 years old. [Board: mark cuts at 25, 35, 45] We cut at 25, 35 and 45. [Board: label 18–25, 26–35, 36–45, 46–60] Four groups. One detail: each group includes its right edge. [Board: draw a closed dot at 25 belonging to the first group] So a 25-year-old goes into 18 to 25, not 26 to 35.
+
+## out/m06_s23.png — narration while this diagram is on screen
+    [Slide 23] [Board: draw 8 rows: Delhi 1737.6, Chennai 570, Delhi 2145.1, Lucknow 3434, Chennai 3486.6, Delhi 2736, Pune …, Pune …]
+    Here are some orders with city and revenue. groupby works in three steps. [Board: draw three piles, write "Split"] Split: put the rows into piles, one per city. [Board: write "Apply: sum" under each pile, write the totals] Apply: do a calculation on each pile – here, sum of revenue. Delhi: 1737.6 plus 2145.1 plus 2736. [Board: draw a small 2-column table, write "Combine"] Combine: put the answers into one small table. Split, apply, combine. That's SUMIFS for every city at once, and it's exactly GROUP BY in SQL.
+
+## out/m06_s28.png — narration while this diagram is on screen
+    [Slide 28] [Board: draw "orders (5,000 rows)" box in the middle]
+    Here's our orders table in the middle. [Board: draw "products" box right, arrow from orders.product_id to products.product_id] On the right, products, connected by product_id. [Board: draw "customers" box left, arrow on customer_id] On the left, customers, connected by customer_id – the schema we drew in Module 4.1. [Board: write "LEFT join: keep every order"] We use a left join – keep every order, and attach details where they match. [Board: write big "rows before = rows after = 5,000"] And the golden rule: after the join, we must still have 5,000 rows. If the number changes, something is wrong.
+
+## out/m07_s04.png — narration while this diagram is on screen
+    [Slide 4] [Board: draw three boxes on the left, one under the other: "ShopKart app", "Payments", "CRM"]
+    Let me draw what a data engineer builds. On the left – where data is born. The ShopKart app, where customers place orders. The payments system – UPI, cards, cash on delivery. And the CRM – customer relationship management – where customer details and Prime membership live. These are called source systems. They are built to run the business, not to answer questions. That's why the data comes out messy.
+    [Board: draw three circles in a row in the middle, labelled E, T, L, with arrows from the boxes into E, and E → T → L]
+    Data comes out of them – that is Extract. Then we clean it – Transform. Then we store it – Load.
+    [Board: draw a cylinder on the right, label it "warehouse"; arrow from L into it]
+    We load it into a warehouse. A warehouse is just a database designed for analysis. More on that in video 7.3.
+    [Board: draw three stick figures on the far right, label "analyst", "scientist", "manager"]
+    And who uses it? Analysts writing SQL. Data scientists building models. Managers reading dashboards.
+    [Board: under T write "clean, merge, add revenue"; under the whole line write "runs every night at 2 am"]
+    Under Transform, I'll write: clean, merge, add revenue. And under the whole picture: runs every night at two a.m. That last line is what makes it a pipeline.
+
+## out/m07_s06.png — narration while this diagram is on screen
+    [Slide 6] [Board: on the pipeline drawing, draw a dotted arrow from E straight to the warehouse, then a small T inside the warehouse]
+    Now, you'll also hear ELT. Same three letters, different order. Extract, Load, then Transform. The raw data lands in the warehouse first, and the cleaning happens inside the warehouse, usually with SQL. This is very common with cloud warehouses, which have lots of cheap storage and very fast SQL. Neither one is wrong. ShopKart in this module is ETL: pandas cleans first, then we load.
+
+## out/m07_s19.png — narration while this diagram is on screen
+    [Slide 19] [Board: draw a big box in the centre, title "fact_orders"; inside write order_id, date_key, customer_id, product_id, quantity, revenue, profit]
+    And that shape is the star schema. In the middle, the fact table – fact_orders. One row per order. Keys and numbers.
+    [Board: draw a box above, "dim_date": date_key, month, quarter, weekday; a box on the left, "dim_customer": customer_id, gender, age, membership; a box on the right, "dim_product": product_id, product_name, category]
+    Around it, the dimensions. dim_date on top, dim_customer on the left, dim_product on the right. They describe things.
+    [Board: draw a line from date_key in the fact to dim_date, customer_id to dim_customer, product_id to dim_product]
+    Now join each key to its dimension. See the shape? A star. [Board: write "fact = numbers, dims = descriptions"]
+    Let's trace one question: revenue by category and month. [Board: trace with a coloured pen: start in fact_orders at revenue → product_id → dim_product.category; date_key → dim_date.month] Revenue comes from the fact. Category comes from dim_product. Month from dim_date. Group by, sum. That's the query we ran in 7.2. Every business question follows this pattern.
+
+## out/m07_s20.png — narration while this diagram is on screen
+    [Slide 20] [Board: draw a clock showing 2:00 on the left]
+    Now scheduling. [Board: to the right of the clock draw four boxes with arrows: extract → transform → checks → load]
+    We want this chain to start at two a.m. every night. The simplest tool is cron, a timer built into Linux servers. [Board: under the clock write "0 2 * * *", and label the five fields: minute, hour, day, month, weekday] A cron line has five parts: minute zero, hour two, and stars for every day, every month, every weekday. Every night at two a.m. If you wanted only Mondays at six in the morning, it would be zero, six, star, star, one. You don't need to memorise this – just know that one short line can start our script at a fixed time, without anyone being awake.
+    [Board: draw a red cross on the "checks" box and an arrow down to "email the engineer"; above the boxes write "DAG = tasks + arrows"]
+    But what if the checks fail? Cron won't tell anyone. That's why companies use Apache Airflow. In Airflow, a pipeline is a DAG – tasks are boxes, arrows give the order. Airflow runs it on time, retries failed tasks, shows every run on a web page, and alerts someone when it breaks.
+
+## out/m08_s05.png — narration while this diagram is on screen
+    [Slide 5] [Board: draw two bars, Delhi and Bengaluru, axis from zero] Let me show you how charts lie. Delhi's revenue is 23.2 lakh rupees. Bengaluru's is 22.6 lakh. When the axis starts at zero, the bars are almost equal, which is the truth. [Board: redraw with the axis starting at 22] Now I start the axis at 22 lakh. Look, Delhi's bar is suddenly more than twice as tall. Our eyes compare the length of bars, so chopping the bottom off makes a three percent gap look huge. [Board: circle the axis start, write "bars start at 0"] Rule number one: bar charts always start at zero.
+
+## out/m09_s05.png — narration while this diagram is on screen
+    [Slide 5] [Board: draw a table with columns city, delivery days, COD?, returned] Let me draw it. Here are five past orders. Pune, 7 days, COD, returned: yes. Delhi, 3 days, UPI: no. And so on. [Board: circle the last column] This column, the one we want to predict, is the target. We call it y. [Board: bracket the other columns] These clue columns are the features. We call them X. [Board: draw a new row with "returned = ?"] A new order arrives: Pune, 6 days, COD. The model looks at the patterns from past rows and makes a guess for this one.
+
+## out/m09_s11.png — narration while this diagram is on screen
+    [Slide 11] [Board: draw a big box "5,000 orders", split it into 4,000 and 1,000] Think of an exam. If a student practises with the exact exam questions, a perfect score means nothing. So we split our 5,000 orders: 4,000 practice questions, the training set, and 1,000 hidden exam questions, the test set. [Board: arrow "model studies" to the left box only] The model studies only the practice box. [Board: arrow "score" to the right box] We score it only on the exam box. [Board: write "stratify: 13.7% returns in both"] One more detail: only 13.7 percent of orders are returned. We want the same share in both boxes. That's called stratify.
+
+## out/m09_s15.png — narration while this diagram is on screen
+    [Slide 15] [Board: axes, quantity on x, revenue on y, 8 dots] Linear regression draws the best straight line through the dots. [Board: draw the line] Every line has two numbers: where it starts, the intercept, and how steep it is, the slope. [Board: arrows from dots to the line] These vertical gaps are the errors. "Best" means the line where these errors, squared and added up, are as small as possible. [Board: write "revenue = intercept + slope × quantity"] With more features, it's the same idea: one slope, or coefficient, per feature.
+
+## out/m09_s20.png — narration while this diagram is on screen
+    [Slide 20] [Board: draw the top box "City = Pune?"] The first model is a decision tree, a flowchart of yes and no questions that the computer learns from data. Our real tree's first question is: is the city Pune? [Board: Yes branch] If yes, about 31 percent are returned, and it then asks whether delivery took more than 9 days. [Board: No branch "Fashion?"] If no, it asks: is it Fashion? Fashion outside Pune: about 19 percent. Everything else: about 10. [Board: write "max_depth = number of questions"] max_depth is how many questions it may ask in a row. We'll use 4.
+
+## out/m09_s27.png — narration while this diagram is on screen
+    [Slide 27] [Board: 2×2 grid; rows actual, columns predicted] The confusion matrix. Rows are what really happened; columns are what the model said.
+    [Board: top-left] Kept and predicted kept: true negative.
+    [Board: top-right] Kept but we said returned: a false positive, a false alarm.
+    [Board: bottom-left] Returned but we said kept: a false negative, a missed return.
+    [Board: bottom-right] Returned and we said returned: a true positive. We caught it.
+
+## out/m09_s32.png — narration while this diagram is on screen
+    [Slide 32] [Board: x-axis depth 1 to 15, y-axis accuracy] I trained trees from depth 1 to 15. [Board: draw the train line rising] On training data, accuracy keeps climbing towards 100 percent. The tree memorises every order. [Board: draw the test line flat then falling] On test data, it stays flat, then falls. [Board: shade the gap, write "overfitting"] This gap is overfitting: memorising instead of learning. Like a student who mugs up last year's answers and fails when the questions change.
+
+## out/m10_s04.png — narration while this diagram is on screen
+    Now, look at this – rating. Should rating be a feature? [Board: write "rating", then cross it out] No! A customer gives a rating after the product arrives – often at the same time as returning it. In ShopKart, returned orders have an average rating of just 2.8 stars, and kept orders 4.1. If we use rating, the model looks brilliant in testing, but on a new order the rating doesn't exist yet. This is called data leakage. I'm writing "leakage" in big letters so we don't forget.
+    One more thing about money. "Profit eaten by returns" can mean many things, so we must define it. We will say: revenue lost to returns equals the total revenue of all returned orders. Our assumption: ShopKart refunds the full amount. We ignore return shipping and resale, because we don't have that data. So it's an estimate – and we'll say so on our slide.
+
